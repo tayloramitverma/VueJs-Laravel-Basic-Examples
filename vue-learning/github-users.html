@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Vue Testing</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" >
+</head>
+<body>
+<div id="app">
+
+  <div class="ui cards">
+      <github-user-card username="tayloramitverma"></github-user-card>
+      <github-user-card v-for="user in users" :username="user.login"></github-user-card>
+  </div>
+
+
+</div>
+
+
+<script type="text/x-template" id="github-user-profile-template">
+
+  <div class="ui card">
+    <div class="image">
+      <a<img :src="user.avatar_url">
+    </div>
+    <div class="content">
+      <a :href="`https://github.com/${username}`" class="header">{{user.name}}</a>
+      <div class="meta">
+        <span class="date">Joined in {{user.created_at}}</span>
+      </div>
+      <div class="description">
+        {{user.bio}}
+      </div>
+    </div>
+    <div class="extra content">
+      <a :href="`https://github.com/${username}`">
+        <i class="user icon"></i>
+        {{user.followers}} Friends
+      </a>
+    </div>
+  </div>
+
+</script>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/axios/dist/axios.js"></script>
+<script src="app-github-users.js"></script>
+</body>
+</html>

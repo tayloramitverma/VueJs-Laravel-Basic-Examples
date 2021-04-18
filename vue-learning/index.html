@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Vue Testing</title>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+<style type="text/css">
+  
+.static.active {
+    background: #ddd;
+    padding: 11px;
+}
+.static.text-danger {
+    background: red;
+    padding: 11px;
+}
+</style>
+</head>
+<body>
+
+<div id="app">
+    {{message}}
+    <br>
+    {{reverseMessageIs()}}
+
+    {{now}}
+
+    <br>
+ <h1>Watch</h1>
+ {{fullName}}   
+<br>
+    <button v-on:click="reverseMessage">Reverse Message</button>
+<br>
+    <input v-model="message">
+
+<h2>Component</h2>
+<ul>
+<todo-item 
+v-for="item in groceryList"
+v-bind:todo="item"
+v-bind:key="item.id"
+></todo-item>
+</ul>
+
+<ul id="example-2">
+  <li v-for="(item, index) in items">
+   
+   {{ index }} - {{ item.message }}
+  </li>
+</ul>
+
+<ul>
+  <li v-for="n in evenNumbers">{{n}}</li>
+</ul>
+
+
+<div class="static" :class="{ active: isActive, 'text-danger': hasError }"></div>
+
+<button @click="changeitNow()">Change Style</button>
+
+</div>
+
+
+
+
+
+<div id="todo-list-example">
+  <form v-on:submit.prevent="addNewTodo">
+    <label for="new-todo">Add a todo</label>
+    <input
+      v-model="newTodoText"
+      id="new-todo"
+      placeholder="E.g. Feed the cat"
+    >
+    <button>Add</button>
+  </form>
+  <ul>
+    <li
+      is="todo-item"
+      v-for="(todo, index) in todos"
+      v-bind:key="todo.id"
+      v-bind:title="todo.title"
+      v-on:checkme="alertMe(index)"
+    ></li>
+  </ul>
+</div>
+
+
+<!-- <div id="app-2">
+  {{foo}}
+
+<button v-on:click="foo = 'baz'">Change it</button>
+</div>
+
+
+<div id="watch-example">
+  <p>
+    Ask a yes/no question:
+    <input v-model="question">
+  </p>
+  <p>{{ answer }}</p>
+</div> -->
+
+
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

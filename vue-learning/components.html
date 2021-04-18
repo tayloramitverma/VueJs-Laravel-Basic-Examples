@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Vue Testing</title>
+
+  <style type="text/css">
+    .active-plan {
+        background: #ddd;
+        color: red;
+    }
+  </style>
+</head>
+<body>
+
+<!-- <div id="app">
+  <counter-view></counter-view>
+  <counter-view></counter-view>
+  <counter-view></counter-view>
+  <counter-view></counter-view>
+  <counter-view></counter-view>
+</div>
+
+<script type="text/x-template" id="counter-view-template">
+  <div>
+    <p>Count is:</p>
+    <button @click="counter++">{{counter}}</button>
+  </div>
+
+</script>
+ -->
+
+<div id="app">
+
+  <plan-picker-item name="Hello" keyin="0"></plan-picker-item>
+  <plan-picker-item name="Amit" keyin="1"></plan-picker-item>
+  <plan-picker-item name="This is testing" keyin="2"></plan-picker-item>
+  <plan-picker-item name="Tools" keyin="3"></plan-picker-item>
+
+  <h1>Plan Picker</h1>
+  
+  <plan-picker></plan-picker>
+
+  <h2>How to pass data from child to parent</h2>
+
+  <plan-picker></plan-picker>
+
+
+  <h2>Customizing Component v-model</h2>
+
+  <base-checkbox></base-checkbox>
+
+  <blog-post id="37042">
+
+    <template #header>
+      <h1>Here might be a page title</h1>
+    </template>
+  
+    <p>A paragraph for the main content.</p>
+    <p>And another one.</p>
+  
+    <template v-slot:footer>
+      <p>Here's some contact info</p>
+    </template>
+
+
+  </blog-post>
+
+
+</div>
+
+
+
+<script type="text/x-template" id="plan-picker-item-template">
+  <div @click="selectMe" :class="{ 'active-plan': isSelected}">
+      <p>{{keyin}} - {{name}}</p>
+  </div>
+</script>
+
+<script type="text/x-template" id="plan-picker-template">
+  
+  <div>
+      <plan-picker-item v-for="(plan, index) in plans" :key="index" :keyin="index" :name="plan" @selectAV="SelectPlan" :selected-plan="selectedPlan"></plan-picker-item>
+  </div>
+
+</script>
+
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/axios/dist/axios.js"></script>
+<script src="app-component.js"></script>
+</body>
+</html>
